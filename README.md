@@ -31,4 +31,4 @@ This creates five text files:
 - `funcDeco.txt` initial wavefunction decomposed using the eigenfunctions. It should be similar to the original wavefunction.
 - `function.txt` one-liner text file containing the formula for the initial wavefunction from the latest simulation.
 
-In addition, it creates (if not already present) two directories: `movies` and `gifs`, and creates a `.MP4` file and a `.gif` of the evolution in time of the given wavefunction, and puts them in their respectful folders.
+In addition, it creates (if not already present) two directories: `movies` and `gifs`, and creates a `.MP4` file and a `.gif` of the evolution in time of the given wavefunction, and puts them in their respectful folders. The `.MP4` file contains a metadata comment in which the formulat for the initial wavefunction is preserved.
