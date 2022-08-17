@@ -8,12 +8,15 @@ A program for various operations related to the quantum wavefunction in a given 
 4. FFTW3
 5. Gnuplot
 6. FFMPEG
+7. ImageMagick
 
 LAPACK, BLAS, and Gfortran can be downloaded from: https://netlib.org/lapack/
 
 FFTW3 can be downloaded from: http://fftw.org/download.html
 
 Gnuplot and FFMPEG can easily be downloaded via command prompt.
+
+ImageMagick can be downloaded from: https://imagemagick.org/script/download.php
  
 # Manual
 1. Copy files from the repository to a chosen location. 
