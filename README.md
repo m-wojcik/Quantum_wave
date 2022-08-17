@@ -24,10 +24,11 @@ ImageMagick can be downloaded from: https://imagemagick.org/script/download.php
 3. Open command prompt and move to a directory with the copied files.
 4. Type: `bash schrodinger.sh FILENAME` with your chosen filename, without any file extension.
 
-This creates four text files:
-- `EigX.txt` with eigenfunctions of the Schrodinger equation for a given potential
-- `EigP.txt`the same eigenfunctions, but in momentum domain (Fourier transform is done using FFTW3)
-- `funcOrig.txt` original  numerical representation of the initial wavefunction
+This creates five text files:
+- `EigX.txt` with eigenfunctions of the Schrodinger equation for a given potential.
+- `EigP.txt`the same eigenfunctions, but in momentum domain (Fourier transform is done using FFTW3).
+- `funcOrig.txt` original  numerical representation of the initial wavefunction.
 - `funcDeco.txt` initial wavefunction decomposed using the eigenfunctions. It should be similar to the original wavefunction.
+- `function.txt` one-liner text file containing the formula for the initial wavefunction from the latest simulation.
 
 In addition, it creates (if not already present) two directories: `movies` and `gifs`, and creates a `.MP4` file and a `.gif` of the evolution in time of the given wavefunction, and puts them in their respectful folders.
