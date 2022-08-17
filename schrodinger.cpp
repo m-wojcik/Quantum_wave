@@ -201,6 +201,9 @@ for(int i=0; i<NPoints; i++){
 	Function[i] = F(VecX[i], 0, 1);
 	FunctionNorm += norm(Function[i]); 
 }
+for(int i=0; i<NPoints; i++){
+	Function[i] /= sqrt(FunctionNorm*dx);
+}
 
 //DECOMPOSITION INTO EIGENVECTORS
 complex<double> *coeffs = new complex<double>[NPoints];
