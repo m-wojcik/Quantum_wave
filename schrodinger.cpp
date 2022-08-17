@@ -191,7 +191,7 @@ for (int j=0;j<NPoints;j++){
 //printf("|psi(f)|^2(n=%d) = %f\n", ind, sumP);
 
 for (int j=0;j<NPoints;j++){
-	cout<<j<<": "<<VecX[j]<<"\t"<<VecP[j]<<endl;
+	//cout<<j<<": "<<VecX[j]<<"\t"<<VecP[j]<<endl;
 }
 
 //CREATING FUNCTION VECTOR
