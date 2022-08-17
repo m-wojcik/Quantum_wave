@@ -8,7 +8,7 @@ if [ ! -d "./animation" ]
 then
     mkdir ./animation
 else
-    rm ./animation/*
+	rm ./animation/*
 fi
 
 if [ ! -d "./gifs" ] 
@@ -21,15 +21,24 @@ then
     mkdir ./movies
 fi
 
+echo "Running simulation"
 g++ -o schrodinger schrodinger.cpp schrodingerLib.cpp -L/usr/local/lib/ -llapack -lblas -lgfortran -lfftw3
 ./schrodinger
 cd ./animation
+
+echo "Creating frames"
 numfiles=$(ls | wc -l)
 xrange=$(cat *.txt | awk '{if ($2 > max) max=$2}END{print max}')
 gnuplot -e "do for [ii=0:$numfiles-1] {set output sprintf('funcAnim%05d.png',ii); set terminal pngcairo; filename=sprintf('funcAnim%05d.txt',ii); plot [ ] [0:$xrange] filename u 1:2 w l s u notitle}"
+
+echo "Creating gif"
 convert -delay 2 -loop 0 *.png $1.gif
-ffmpeg -r 50 -i funcAnim%05d.png -y -an -pix_fmt yuv420p $1.mp4
+
+echo "Creating MP4 movie"
+ffmpeg -loglevel warning -r 50 -i funcAnim%05d.png -y -an -pix_fmt yuv420p $1.mp4
 mv $1.gif ../gifs/
 mv $1.mp4 ../movies/
 cd ..
 rm -r ./animation
+
+echo "Done."
