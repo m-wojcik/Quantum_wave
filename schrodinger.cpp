@@ -21,12 +21,11 @@ double V(double x){
 	return x*x/2;
 }
 
+// write the below function in one line!
 
-double F(double x, double mu, double sigma){
-	return exp(-(x-mu)*(x-mu)/(2*sigma)) * sin(3*sin(5*x)*cos(2*x)*x)*x; 
-	//if(abs(x)<1) return 0.5;
-	//else return 0;
-}
+double F(double x, double mu, double sigma) {return exp(-(x-mu)*(x-mu)/(2*sigma)) * log(x*x*x*x+0.4) * sin(log(x*x+2)*x + cos(7*x)); }
+
+
 
 
 // DO PRZENIESIENIA DO BIBLIOTEKI
@@ -192,7 +191,7 @@ for (int j=0;j<NPoints;j++){
 //printf("|psi(f)|^2(n=%d) = %f\n", ind, sumP);
 
 for (int j=0;j<NPoints;j++){
-	//cout<<j<<": "<<VecX[j]<<"\t"<<VecP[j]<<endl;
+	cout<<j<<": "<<VecX[j]<<"\t"<<VecP[j]<<endl;
 }
 
 //CREATING FUNCTION VECTOR
@@ -202,13 +201,6 @@ for(int i=0; i<NPoints; i++){
 	Function[i] = F(VecX[i], 0, 1);
 	FunctionNorm += norm(Function[i]); 
 }
-
-double sumaF = 0;
-for(int i=0; i<NPoints; i++){
-	Function[i] /= sqrt(FunctionNorm*dx);
-	sumaF += norm(Function[i])*dx;
-}
-printf("sumaF: %f\n", sumaF);
 
 //DECOMPOSITION INTO EIGENVECTORS
 complex<double> *coeffs = new complex<double>[NPoints];
@@ -225,7 +217,7 @@ for(int i=0; i<NPoints; i++){
 	coeffsum += norm(coeffs[i]);
 	//printf("a_%d = %f\n", i, norm(coeffs[i]));
 }
-printf("suma wspolczynnikow: %.19f\n", coeffsum);
+printf("Sum of squared coefficients modulus : %.19f\n", coeffsum);
 
 // EXPORTING ORIGINAL FUNCTION TO FILE
 FILE *fp3;

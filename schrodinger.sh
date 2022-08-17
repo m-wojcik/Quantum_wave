@@ -21,9 +21,11 @@ then
     mkdir ./movies
 fi
 
+start_time=$(date +%s)
 echo "Running simulation"
 g++ -o schrodinger schrodinger.cpp schrodingerLib.cpp -L/usr/local/lib/ -llapack -lblas -lgfortran -lfftw3
 ./schrodinger
+initialfunction=$(cat schrodinger.cpp | grep "double F(")
 cd ./animation
 
 echo "Creating frames"
@@ -35,10 +37,12 @@ echo "Creating gif"
 convert -delay 2 -loop 0 *.png $1.gif
 
 echo "Creating MP4 movie"
-ffmpeg -loglevel warning -r 50 -i funcAnim%05d.png -y -an -pix_fmt yuv420p $1.mp4
+ffmpeg -loglevel warning -r 50 -i funcAnim%05d.png -y -an -pix_fmt yuv420p -metadata description="$initialfunction" $1.mp4 
 mv $1.gif ../gifs/
 mv $1.mp4 ../movies/
 cd ..
+echo "$initialfunction" > function.txt
 rm -r ./animation
-
-echo "Done."
+end_time=$(date +%s)
+elapsed=$(( end_time - start_time ))
+echo "Done in $elapsed seconds."
