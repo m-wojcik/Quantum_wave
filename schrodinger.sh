@@ -6,8 +6,9 @@ fi
 
 if [ ! -d "./animation" ] 
 then
-	echo "asdf"
     mkdir ./animation
+else
+    rm ./animation/*
 fi
 
 if [ ! -d "./gifs" ] 
@@ -20,8 +21,6 @@ then
     mkdir ./movies
 fi
 
-
-rm ./animation/*
 g++ -o schrodinger schrodinger.cpp schrodingerLib.cpp -L/usr/local/lib/ -llapack -lblas -lgfortran -lfftw3
 ./schrodinger
 cd ./animation
